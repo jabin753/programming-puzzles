@@ -19,18 +19,6 @@ import { assertEquals } from "testing/asserts.ts";
  *       Input: nums = [1,1,2,2], n = 2
  *       Output: [1,2,1,2]
  */
-function shuffle(nums: number[], n: number) {
-  /** Time: O(n) */
-  if (nums.length !== n * 2) return null;
-
-  let array = [];
-
-  for (let index = 0; index < n; index++) {
-    array.push(nums[index], nums[n + index]);
-  }
-
-  return array;
-}
 
 Deno.test("shuffle", () => {
   let fixtures = [

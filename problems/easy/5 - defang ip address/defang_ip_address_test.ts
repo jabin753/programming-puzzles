@@ -14,31 +14,6 @@ import { assertEquals } from "testing/asserts.ts";
  *       Input: address = "255.100.50.0"
  *       Output: "255[.]100[.]50[.]0"
  */
-function defangIPaddr(address: string) {
-  /** Time: O(n) */
-  let defanged = "";
-  for (let index = 0; index < address.length; index++) {
-    const str = address[index];
-    if (str === ".") {
-      defanged += "[.]";
-    } else {
-      defanged += str;
-    }
-  }
-
-  /**
-   * You could split and join, but that will increase the space
-   * by creating a new array
-   *      
-   *       return address.split('.').join('[.]')
-   * 
-   * You could use replaceAll, but where is all the fun? :)
-   * 
-   *       return address.replaceAll(".", "[.]")
-   */
-
-  return defanged;
-}
 
 Deno.test("defangIPaddr", () => {
   let fixtures = [{

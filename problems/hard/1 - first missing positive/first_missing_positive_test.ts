@@ -14,69 +14,6 @@ import { assertEquals } from "testing/asserts.ts";
  *       Input: [7,8,9,11,12]
  *       Output: 1
  */
-function firstMissingPositive(nums: Array<number | boolean>) {
-  let size = nums.length;
-
-  /**
-   * Without using extra space, we can swap the current
-   * position value to the correct one and add a boolean
-   * flag `true` to know if it's in the correct position.
-   * 
-   * If the number to be changed is outside the range of
-   * the array, we can flag it to `false`. 
-   */
-  for (let i = 0; i < size; i++) {
-    let num = nums[i];
-    if (typeof num === "number") { // if num is NAN, then it has been flagged
-      swap(i, num - 1);
-    }
-  }
-
-  /**
-   * We check for the first `false` value.
-   * If we found one, we sum that position + 1
-   * to get the value of the missing number.
-   */
-  for (let i = 0; i < size; i++) {
-    let num = nums[i];
-    if (num === false) {
-      return i + 1;
-    }
-  }
-
-  return size + 1;
-
-  /**
-   * Function that swap two values from the array
-   */
-  function swap(from: number, to: number) {
-    let num = nums[from];
-    let numToMove = nums[to];
-
-    // If number is in correct position,
-    // then we don't need to do anything
-    if (num === from + 1) {
-      return;
-    }
-
-    // If number outbounds the size of the array
-    // or we already have a correct position number
-    // then we can safely flag it
-    if (num > size || num <= 0 || nums[to] === true) {
-      return nums[from] = false;
-    }
-
-    // We do the swap
-    nums[to] = true;
-    nums[from] = numToMove;
-
-    // We recursively check for the current number
-    // and start the swap procedure once again.
-    if (typeof numToMove === "number" && numToMove !== from + 1) {
-      swap(from, numToMove - 1);
-    }
-  }
-}
 
 Deno.test("first missing positive", () => {
   let fixtures = [{

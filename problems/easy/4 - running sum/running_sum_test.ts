@@ -14,21 +14,6 @@ import { assertEquals } from "testing/asserts.ts";
  *       Output: [1,2,3,4,5]
  *       Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
  */
-function runningSum(nums: number[]) {
-  /** Time: O(n), Space: O(1) */
-  for (let i = 1; i < nums.length; i++) {
-    nums[i] += nums[i - 1];
-  }
-
-  return nums;
-
-  /**
-   * You can also use a map/reducer
-   *       return nums.map((num) => acc += num);
-   * 
-   * But that will use Space O(n)
-   */
-}
 
 Deno.test("runningSum", () => {
   let fixtures = [{

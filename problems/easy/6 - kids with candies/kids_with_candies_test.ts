@@ -27,12 +27,6 @@ import { assertEquals } from "testing/asserts.ts";
  *       Input: candies = [12,1,12], extraCandies = 10
  *       Output: [true,false,true]
  */
-function kidsWithCandies(candies: number[], extraCandies: number): boolean[] {
-  /** Time: O(n) */
-  let max = Math.max(...candies);
-
-  return candies.map((kid) => kid + extraCandies >= max);
-}
 
 Deno.test("kidWithCandies", () => {
   let fixtures = [{
